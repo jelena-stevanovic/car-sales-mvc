@@ -1,0 +1,38 @@
+﻿@model CarsSelling.ViewModel.CarDetailsViewModel
+@{
+    ViewData["Title"] = @localizer["Details"];
+}
+
+<div class="d-md-flex justify-content-center">
+    <div class="col col-md-10">
+        @if (Model.AfterCreation)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>@localizer["SuccessfulInsert"]</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div class="card lead">
+            <img src="@Url.Content(Model.Car.ImagePath)" alt="Car picture" class="d-block w-100" />
+            <h4 class="p-3"> @Model.Car.Make.Name  @Model.Car.Model</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item text-justify">@Model.Car.Description</li>
+                <li class="list-group-item"><h5>@localizer["Price"]</h5>@Model.Car.Price.ToString("c")</li>
+                <li class="list-group-item"><h5>@localizer["Year"]</h5>@Model.Car.Year</li>
+                <li class="list-group-item"><h5>@localizer["Body"]</h5>@Model.Car.BodyType.Name</li>
+                <li class="list-group-item"><h5>@localizer["Fuel"]</h5>@Model.Car.FuelType.Name</li>
+                <li class="list-group-item"><h5>@localizer["Displacement"]</h5>@Model.Car.Displacement</li>
+                <li class="list-group-item"><h5>@localizer["Power"]</h5>@Model.Car.Power</li>
+                <li class="list-group-item"><h5>@localizer["Contact"]</h5>@Model.Car.Contact</li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <a class="btn btn-primary ml-3" asp-action="Index"
+           asp-controller="Home">
+            <h5> @localizer["BackToCars"]</h5>
+        </a>
+    </div>
+</div>

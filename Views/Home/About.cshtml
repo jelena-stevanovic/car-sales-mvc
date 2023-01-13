@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = @localizer["AboutUsTitle"];
+}
+
+
+<div class="card text-center">
+    <div class="card-header">
+        <h4>@localizer["AboutUsTitle"]</h4>
+    </div>
+    <div class="card-body text-justify text-center">
+        <p class="card-text my-4">@localizer["AboutUsOffers"]</p>
+    </div>
+</div>
+<div class="card my-5 text-center">
+    <div class="card-header">
+        <h4>@localizer["AboutSubtitle"]</h4>
+    </div>
+    <div class="card-body my-5">
+        <h5 class="card-title  mb-5">@localizer["AddCar"]</h5>
+        <p class="card-text">@localizer["AboutUsSellingCar"]</p>
+    </div>
+    <div class="card-footer">
+        <div class="mt-2">
+            <a asp-action="AddCar"
+               asp-controller="Car" class="btn btn-primary">@localizer["AddCar"]</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model Car
+@{
+    ViewData["Title"] = @localizer["ConfirmDelete"];
+}
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div class="card bg-light text-center">
+            <h4 class=" card-header mb-2">
+                @localizer["ConfirmDeleteHeading"]
+            </h4>
+            <div class="card-body my-4">
+                <h4>@Model.Make.Name</h4>
+                <h4>@Model.Model</h4>
+            </div>
+            <div>
+                <a class="btn btn-primary mb-5"
+                   asp-controller="Home"
+                   asp-action="Delete"
+                   asp-route-id="@Model.Id">
+                    @localizer["Delete"]
+                </a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a class="btn btn-primary btn-lg ml-3" asp-controller="Home"
+           asp-action="Index">
+            @localizer["BackToCars"]
+        </a>
+    </div>
+</div>
+

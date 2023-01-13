@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Car>
+@{
+    ViewData["Title"] = @localizer["Home"];
+}
+
+@if (TempData["deletionMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>@TempData["deletionMessage"]</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<partial name="_Carousel" />
+
+<div class="row">
+    @foreach (var car in @Model)
+    {
+        <div class="col-md-6 col-lg-4 mt-3 font-weight-lighter">
+            <div class="card bg-light">
+                <img src="@Url.Content(car.ImagePath)" alt="@car.Make.Name @car.Model" class="img-thumbnail" />
+                <div class="card-body">
+                    <h3>
+                        @car.Make.Name @car.Model
+                    </h3>
+                    <p> @car.Price.ToString("c")<p />
+                    <a asp-controller="Car"
+                   asp-action="Details"
+                   asp-route-id="@car.Id">
+                        <h5>@localizer["ReadMore"]</h5>
+                    </a>
+
+                        @if (User.IsInRole("Administrator"))
+                        {
+                        <a class="btn btn-primary btn-sm"
+                   asp-controller="Home"
+                   asp-action="ConfirmDelete"
+                   asp-route-id="@car.Id">
+                            <h5>@localizer["Delete"]</h5>
+                        </a>
+                        }
+                </div>
+            </div>
+        </div>
+    }
+</div>
